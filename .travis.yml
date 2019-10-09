@@ -1,8 +1,13 @@
-language: generic
-
 sudo: required
-services:
+
+service:
   - docker
+
+before_install:
+  - docker build -t rudolphp/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true rudolphp/react-test npm run test -- --coverage
 
 before_install:
   - docker build -t rudolphp/react-test -f ./client/Dockerfile.dev ./client
