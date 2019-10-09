@@ -4,7 +4,7 @@ service:
   - docker
 
 before_install:
-  - docker build -t rudolphp/react-test -f Dockerfile.dev .
+  - docker build -t rudolphp/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true rudolphp/react-test npm run test
