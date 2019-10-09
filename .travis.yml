@@ -10,7 +10,7 @@ before_install:
 script:
   - docker run -e CI=true rudolphp/react-test npm run test -- --coverage
 
-  after_success:
+after_success:
   - docker build rudolphp/multi-client ./client 
   - docker build rudolphp/multi-nginx ./nginx 
   - docker build rudolphp/multi-server ./server 
